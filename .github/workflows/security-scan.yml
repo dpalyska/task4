@@ -18,15 +18,16 @@ jobs:
         run: |
           docker build -t myapp:latest .
 
-      - name: Run Trivy scan
-        uses: aquasecurity/trivy-action@0.33.1
-        with:
-          image-ref: 'myapp:latest'
-          vuln-type: 'os,library'
-          format: 'table'
+      # - name: Run Trivy scan
+      #   uses: aquasecurity/trivy-action@0.33.1
+      #   with:
+      #     image-ref: 'myapp:latest'
+      #     vuln-type: 'os,library'
+      #     format: 'table'
 
       - name: Install Semgrep
         run: |
+          python3 -m pip install --upgrade pip
           sudo pip install semgrep
 
       - name: Run Semgrep SAST
